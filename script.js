@@ -4,9 +4,11 @@ let picker = document.getElementById("picker");
 let color = picker.value;
 let sizeLabel = document.querySelector(".sizeLabel");
 let lineBtn = document.querySelector(".lineBtn");
+let reset = document.querySelector(".reset");
 let eraser = document.querySelector(".eraser");
 let darken = document.querySelector(".darken");
 let dark = false;
+let whitten = false;
 let clicked = false;
 let line = true;
 
@@ -30,6 +32,15 @@ function gridLine() {
         allGrid.forEach(function (grid) {
             grid.style.border = '1px solid black';
         })
+    }
+}
+
+function erase(){
+    if (whitten){
+        whitten = false;
+    }
+    else{
+        whitten = true;
     }
 }
 
@@ -98,7 +109,10 @@ function createGrid() {
     allGrid.forEach(function (grid) {
         grid.addEventListener('mouseenter', (event) => {
             if (clicked) {
-                if (dark) {
+                if (whitten){
+                    event.target.style.backgroundColor = "rgb(255,255,255)";
+                }
+                else if (dark) {
                     let bg = window.getComputedStyle(grid).getPropertyValue("background-color");
                     // Extracting RGB values
                     let rgbValues = bg.match(/\d+/g);
@@ -119,7 +133,8 @@ function createGrid() {
 size.addEventListener('input', createGrid);
 lineBtn.addEventListener('click', gridLine);
 picker.addEventListener('input', colorPicker);
-eraser.addEventListener('click', resetPlate);
+reset.addEventListener('click', resetPlate);
 darken.addEventListener('click', darkening);
+eraser.addEventListener('click', erase);
 
 createGrid();
