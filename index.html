@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>Etch A Sketch</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="setting">
+            <div class="size">
+                <div class="sizeLabel">Value : 16x16 </div>
+                <input type="range" id="size" value="16" min="1" max="100" step="1"/>
+            </div>
+            <div class="color">
+                <laber for="picker">Color: </laber>
+                <input type="color" id="picker" />
+            </div>
+            <div class="button">
+                <button class="darken">Darken color</button>
+                <button class="eraser">Eraser</button>
+                <button class="lineBtn">Grid Line</button>
+            </div>
+        </div>
+        <div class="plate"></div>
+    </div>
+</body>
+
+</html>
