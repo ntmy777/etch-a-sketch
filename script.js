@@ -26,11 +26,16 @@ function gridLine() {
             grid.style.border = 'none';
         })
     }
-
     else {
         allGrid.forEach(function (grid) {
             grid.style.border = '1px solid black';
         })
+    }
+}
+
+function buttonColor(btn){
+    if(btn){
+        btn.style.backgroundColor="green";
     }
 }
 
@@ -71,9 +76,15 @@ function createGrid() {
         grid.className = 'grid';
         plate.appendChild(grid);
         grid.style.backgroundColor = 'rgb(255, 255, 255)';
+        if (line) {
+            grid.style.border = '1px solid black';
+        }
+        else {
+            grid.style.border = 'none';
+        }
     }
     sizeLabel.textContent = `Value: ${size.value} x ${size.value}`;
-
+    
     plate.addEventListener('mousedown', function (event) {
         clicked = true;
     });
