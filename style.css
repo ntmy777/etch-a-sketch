@@ -1,18 +1,52 @@
-.plate{
+body {
+    background-image: linear-gradient(to bottom right, #e0ffcd, #fdffcd, #ffebbb, #ffcab0);
+}
+
+.plate {
     border-color: black;
     display: grid;
-    width: 500px;
-    height: 500px;
+    width: 455px;
+    height: 455px;
     border: 1px solid black;
+    /* margin-right: 10%; */
 }
 
-.container{
+h1{
+    text-align: center;
+    margin: 15px auto;
+}
+
+.container {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 }
-/* 
-.grid{
-    border: 1px solid black;
-} */
 
+.setting{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 30px;
+    margin: 30px;
+}
+
+button{
+    width: 150px;
+}
+
+.color{
+    margin-top: 50px;
+}
+
+.color{
+    display: flex;
+    flex-direction: row;
+}
+
+#picker, #size{
+    width: 100%;
+}
+
+#picker{
+    margin-left: 5px;
+}
