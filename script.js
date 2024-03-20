@@ -38,27 +38,31 @@ function gridLine() {
 function erase(){
     if (whitten){
         whitten = false;
+        dark = false;
     }
     else{
         whitten = true;
     }
 }
 
-function buttonColor(btn){
-    if(btn){
-        btn.style.backgroundColor="green";
-    }
-}
+// function buttonColor(btn){
+//     if(btn){
+//         btn.style.backgroundColor="green";
+//     }
+// }
 
 function resetPlate() {
     let allGrid = document.querySelectorAll(".grid");
     allGrid.forEach(function (grid) {
         grid.style.backgroundColor = "white";
     })
+    whitten = false;
 }
 
 function colorPicker() {
     color = picker.value;
+    whitten = false;
+    dark = false;
     return color;
 }
 
@@ -68,6 +72,7 @@ function darkening() {
     }
     else {
         dark = true;
+        whitten = false;
     }
     return dark;
 }
@@ -110,7 +115,7 @@ function createGrid() {
         grid.addEventListener('mouseenter', (event) => {
             if (clicked) {
                 if (whitten){
-                    event.target.style.backgroundColor = "rgb(255,255,255)";
+                    color = "rgb(255,255,255)";
                 }
                 else if (dark) {
                     let bg = window.getComputedStyle(grid).getPropertyValue("background-color");
@@ -119,11 +124,12 @@ function createGrid() {
                     let r = Math.max(parseInt(rgbValues[0]) - parseInt(rgbValues[0])/10, 0);
                     let g = Math.max(parseInt(rgbValues[1]) - parseInt(rgbValues[1])/10, 0);
                     let b = Math.max(parseInt(rgbValues[2]) - parseInt(rgbValues[2])/10, 0);
-                    event.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+                    color = `rgb(${r}, ${g}, ${b})`;
                 }
                 else {
-                    event.target.style.backgroundColor = colorPicker();
+                    color = colorPicker();
                 }
+                event.target.style.backgroundColor = color;
             }
         });
     });
@@ -132,7 +138,7 @@ function createGrid() {
 
 size.addEventListener('input', createGrid);
 lineBtn.addEventListener('click', gridLine);
-picker.addEventListener('input', colorPicker);
+picker.addEventListener('click', colorPicker);
 reset.addEventListener('click', resetPlate);
 darken.addEventListener('click', darkening);
 eraser.addEventListener('click', erase);
